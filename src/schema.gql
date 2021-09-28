@@ -1,0 +1,91 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  _id: String!
+  name: String!
+  email: String!
+  login: String!
+  password: String!
+}
+
+type Product {
+  _id: String!
+  name: String!
+  price: Float!
+  category: String!
+  available: Int!
+}
+
+type OrderLine {
+  _id: String!
+  product: Product!
+  quantity: Int!
+  totalValue: Float!
+}
+
+type Order {
+  _id: String!
+  user: User!
+  orderLines: [OrderLine!]
+  totalValue: Float!
+}
+
+type Post {
+  _id: String!
+  name: String!
+}
+
+type Query {
+  users: [User!]!
+  getProduct(id: String!): Product!
+  products: [Product!]!
+  orders: [Order!]!
+  order(id: String!): Order!
+  post(id: Int!): Post!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  deleteUser(id: String!): User!
+  createProduct(input: CreateProductInput!): Product!
+  createOrder(input: CreateOrderInput!): Order!
+  addOrderLine(input: AddOrderLineInput!, id: String!): Order!
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  login: String!
+  password: Int!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Float!
+  category: String!
+  available: Int!
+}
+
+input CreateOrderInput {
+  userId: String!
+}
+
+input AddOrderLineInput {
+  userId: String
+  productId: String!
+  quantity: Int!
+}
+
+input CreatePostInput {
+  name: String!
+}
+
+input UpdatePostInput {
+  name: String
+  id: Int!
+}
