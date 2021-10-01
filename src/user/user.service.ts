@@ -12,11 +12,11 @@ export class UserService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.userModel.find().lean();
+    return this.userModel.find({}, { password: 0 }).lean();
   }
 
   async findOne(id: string): Promise<User> {
-    return this.userModel.findById(id).orFail();
+    return this.userModel.findById(id, { password: 0 }).orFail();
   }
 
   async findByLogin(login: string): Promise<User> {

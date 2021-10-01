@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, HideField, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Exclude } from 'class-transformer';
 
 @Schema()
 @ObjectType()
@@ -20,8 +21,8 @@ export class User extends Document{
   @Prop({ required: true })
   login: string;
 
-  @Field()
-  @Prop({ required: true })
+  @HideField()
+  @Prop({ required: true })// TODO: testar o uso da propriedade 'set'
   password: string;
 }
 

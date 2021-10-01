@@ -7,7 +7,6 @@ type User {
   name: String!
   email: String!
   login: String!
-  password: String!
 }
 
 type Product {
